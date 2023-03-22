@@ -1,0 +1,31 @@
+================ Zabbix CLI ===============
+https://www.zabbix.com/documentation/current/manual/concepts/server
+https://www.zabbix.com/documentation/current/manual/concepts/get
+https://www.zabbix.com/documentation/current/manpages/zabbix_get
+
+Operation commands:
+	systemctl start/stop/status/restart zabbix-server
+
+Using commands:
+	Zabbix_server
+				zabbix_server -V    #show zabbix version
+				zabbix_server -h     # help
+				zabbix_server -c /etc/zabbix/zabbix_server.conf 
+				Zabbix_server -R < option >    #runtime-control
+					zabbix_server -R config_cache_reload
+					zabbix_server -R housekeeper_execute
+					zabbix_server -R log_level_increase
+					zabbix_server -R log_level_decrease
+				zabbix_server -R diaginfo=target       #get các thông tin chuẩn đoán
+								historycache - history cache statistics
+								valuecache - value cache statistics
+								preprocessing - preprocessing manager statistics
+								alerting - alert manager statistics
+								lld - LLD manager statistics
+								locks - list of mutexes 
+					zabbix_server -R diaginfo=historycache
+					zabbix_server -R diaginfo=valuecache
+				zabbix_server -R diaginfo=lld
+	Zabbix_get
+				zabbix_get -s host-name-or-IP [-p port-number] [-I IP-address] -k item-key
+					zabbix_get -s 10.250.0.5 -p 10050 -k "system.hostname"

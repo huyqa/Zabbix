@@ -1,0 +1,32 @@
+############# Zabbix Agent Installation ##########
+
+
+========== Linux ==============
+
+cat /etc/centos-release-upstream
+
+# Browser to http://repo.zabbix.com/zabbix, navigate to desire version
+
+yum install http://repo.zabbix.com/zabbix/5.0/rhel/7/x86_64/zabbix-agent-5.0.0-1.el7.x86_64.rpm
+
+vi /etc/zabbix/zabbix_agentd.conf
+
+	edit Server & ServerActive
+	
+	:wq
+	
+systemctl start zabbix-agent
+
+systemctl status zabbix-agent
+
+systemctl enable zabbix-agent
+
+ps u -C zabbix_agentd
+
+netstat -ntulp | grep zabbix_agentd
+
+
+
+========== Windows ==============
+
+https://www.zabbix.com/download_agents?version=5.0+LTS&release=5.0.9&os=Windows&os_version=Any&hardware=amd64&encryption=OpenSSL&packaging=MSI
